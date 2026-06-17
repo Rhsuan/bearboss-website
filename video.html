@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>影音製作｜Bearboss 數位行銷</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+  :root {
+    --orange: #E8521A; --orange-light: #FFF0EA; --orange-dark: #C24010;
+    --ink: #1A1A1A; --ink-mid: #6B6B66; --ink-faint: #A8A89F;
+    --surface: #F5F4F0; --white: #FFFFFF; --border: #E0DED6; --border-faint: #EDECEA;
+    --font: 'Inter', 'Noto Sans TC', -apple-system, sans-serif;
+  }
+  body { font-family: var(--font); background: var(--white); color: var(--ink); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+  a { text-decoration: none; color: inherit; }
+
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-faint); padding: 0 5%; }
+  .nav-inner { max-width: 1140px; margin: 0 auto; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+  .logo { display: flex; align-items: center; gap: 9px; font-size: 15px; font-weight: 500; letter-spacing: -0.02em; }
+  .logo-mark { width: 24px; height: 24px; background: var(--orange); border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+  .logo-mark svg { width: 14px; height: 14px; fill: #fff; }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 13.5px; color: var(--ink-mid); transition: color 0.15s; }
+  .nav-links a.active { color: var(--orange); font-weight: 500; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta { background: var(--ink); color: var(--white) !important; font-size: 13px !important; font-weight: 500; padding: 8px 18px; border-radius: 100px; transition: background 0.15s !important; }
+  .nav-cta:hover { background: var(--orange) !important; }
+
+  .page-hero { max-width: 1140px; margin: 0 auto; padding: 72px 5% 56px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.25rem; }
+  .eyebrow::before { content: ''; width: 20px; height: 1.5px; background: var(--orange); display: inline-block; }
+  .page-title { font-size: clamp(34px, 5vw, 52px); font-weight: 500; line-height: 1.12; letter-spacing: -0.03em; max-width: 720px; margin-bottom: 1.25rem; }
+  .page-title .accent { color: var(--orange); font-style: italic; }
+  .page-sub { font-size: 16px; color: var(--ink-mid); line-height: 1.65; max-width: 540px; }
+
+  .section { max-width: 1140px; margin: 0 auto; padding: 0 5% 96px; }
+  .section-divider { max-width: 1140px; margin: 0 auto; padding: 0 5%; }
+  .section-divider hr { border: none; border-top: 1px solid var(--border-faint); margin-bottom: 96px; }
+  .section-label { font-size: 11.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
+  .section-title { font-size: clamp(24px, 3vw, 34px); font-weight: 500; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 2.5rem; }
+
+  /* Video type cards */
+  .video-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .video-card { border: 1px solid var(--border); border-radius: 16px; overflow: hidden; transition: border-color 0.2s, transform 0.2s; }
+  .video-card:hover { border-color: var(--orange); transform: translateY(-3px); }
+  .video-thumb { aspect-ratio: 16/9; background: var(--surface); display: flex; align-items: center; justify-content: center; position: relative; }
+  .play-btn { width: 44px; height: 44px; border-radius: 50%; background: var(--orange); display: flex; align-items: center; justify-content: center; }
+  .play-btn svg { width: 16px; height: 16px; fill: #fff; }
+  .video-body { padding: 24px; }
+  .video-name { font-size: 16px; font-weight: 500; margin-bottom: 0.5rem; }
+  .video-desc { font-size: 13px; color: var(--ink-mid); line-height: 1.6; }
+
+  /* Production pipeline */
+  .pipeline { display: flex; gap: 0; }
+  .pipeline-step { flex: 1; padding: 24px; border: 1px solid var(--border); position: relative; }
+  .pipeline-step:not(:last-child) { border-right: none; }
+  .pipeline-step:first-child { border-radius: 16px 0 0 16px; }
+  .pipeline-step:last-child { border-radius: 0 16px 16px 0; }
+  .pipeline-step-num { font-size: 11.5px; font-weight: 500; color: var(--orange); letter-spacing: 0.05em; margin-bottom: 0.75rem; }
+  .pipeline-step-name { font-size: 14.5px; font-weight: 500; margin-bottom: 0.4rem; }
+  .pipeline-step-desc { font-size: 12.5px; color: var(--ink-mid); line-height: 1.55; }
+
+  .cta-band { max-width: 1140px; margin: 0 auto; padding: 0 5% 96px; }
+  .cta-inner { background: var(--ink); border-radius: 20px; padding: 64px 56px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+  .cta-text .eyebrow { color: rgba(232,82,26,0.9); }
+  .cta-headline { font-size: clamp(26px, 3vw, 38px); font-weight: 500; color: var(--white); letter-spacing: -0.025em; line-height: 1.2; margin-top: 0.75rem; }
+  .cta-headline .accent { color: var(--orange); }
+  .btn-white { background: var(--white); color: var(--ink); font-size: 14px; font-weight: 500; padding: 14px 28px; border-radius: 100px; white-space: nowrap; transition: background 0.15s; display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .btn-white:hover { background: var(--orange); color: var(--white); }
+
+  footer { border-top: 1px solid var(--border-faint); padding: 40px 5%; }
+  .footer-inner { max-width: 1140px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .footer-info { font-size: 13px; color: var(--ink-faint); line-height: 1.8; }
+  .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+  .footer-links a { font-size: 13px; color: var(--ink-faint); transition: color 0.15s; }
+  .footer-links a:hover { color: var(--orange); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .page-hero { padding: 48px 5% 40px; }
+    .video-grid { grid-template-columns: 1fr; }
+    .pipeline { flex-direction: column; }
+    .pipeline-step { border-right: 1px solid var(--border) !important; border-bottom: none; }
+    .pipeline-step:first-child { border-radius: 16px 16px 0 0; }
+    .pipeline-step:last-child { border-radius: 0 0 16px 16px; border-bottom: 1px solid var(--border); }
+    .cta-inner { padding: 40px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <div class="logo-mark"><svg viewBox="0 0 14 14"><path d="M2 11 L7 3 L12 11 Z"/></svg></div>
+      BearBoss
+    </a>
+    <ul class="nav-links">
+      <li><a href="/ads.html">廣告代操</a></li>
+      <li><a href="/design.html">圖像設計</a></li>
+      <li><a href="/video.html" class="active">影音製作</a></li>
+      <li><a href="/contact.html" class="nav-cta">聯絡我們</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="eyebrow">影音製作</div>
+  <h1 class="page-title">用影像<br><span class="accent">講出品牌故事</span></h1>
+  <p class="page-sub">廣告影片、品牌形象片、短影音內容。從腳本構思到後製剪輯，全程製作把關。</p>
+</section>
+
+<section class="section">
+  <div class="section-label">製作項目</div>
+  <h2 class="section-title">我們能製作的影音內容</h2>
+  <div class="video-grid">
+    <div class="video-card">
+      <div class="video-thumb"><div class="play-btn"><svg viewBox="0 0 16 16"><path d="M4 2v12l10-6z"/></svg></div></div>
+      <div class="video-body">
+        <div class="video-name">廣告投放影片</div>
+        <div class="video-desc">針對 Meta、YouTube 廣告版位設計的短秒數影片，強化前 3 秒吸睛度。</div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-thumb"><div class="play-btn"><svg viewBox="0 0 16 16"><path d="M4 2v12l10-6z"/></svg></div></div>
+      <div class="video-body">
+        <div class="video-name">品牌形象片</div>
+        <div class="video-desc">完整敘事的品牌故事影片，適合官網首頁、提案或活動播放使用。</div>
+      </div>
+    </div>
+    <div class="video-card">
+      <div class="video-thumb"><div class="play-btn"><svg viewBox="0 0 16 16"><path d="M4 2v12l10-6z"/></svg></div></div>
+      <div class="video-body">
+        <div class="video-name">短影音內容</div>
+        <div class="video-desc">Reels、Shorts 格式的社群短影音，維持穩定發布節奏與互動成效。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><hr></div>
+
+<section class="section" style="padding-bottom: 96px;">
+  <div class="section-label">製作流程</div>
+  <h2 class="section-title">從腳本到成片</h2>
+  <div class="pipeline">
+    <div class="pipeline-step">
+      <div class="pipeline-step-num">STEP 01</div>
+      <div class="pipeline-step-name">腳本構思</div>
+      <div class="pipeline-step-desc">確認影片目標與核心訊息，撰寫分鏡腳本。</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="pipeline-step-num">STEP 02</div>
+      <div class="pipeline-step-name">拍攝 / 製作</div>
+      <div class="pipeline-step-desc">實景拍攝或動態素材製作，掌握畫面品質。</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="pipeline-step-num">STEP 03</div>
+      <div class="pipeline-step-name">剪輯後製</div>
+      <div class="pipeline-step-desc">剪輯、調色、配樂與字幕，完成影片初版。</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="pipeline-step-num">STEP 04</div>
+      <div class="pipeline-step-name">確認交付</div>
+      <div class="pipeline-step-desc">依回饋微調，輸出符合各平台規格的最終檔案。</div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="cta-inner">
+    <div class="cta-text">
+      <div class="eyebrow">立即開始</div>
+      <h2 class="cta-headline">想為品牌打造<br><span class="accent">有記憶點的影片？</span></h2>
+    </div>
+    <a href="/contact.html" class="btn-white">
+      免費諮詢
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h8M8 4l3 3-3 3"/></svg>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-info">
+      © 2025 BearBoss 數位行銷&emsp;·&emsp;0277529867&emsp;·&emsp;service@bearbosses.com<br>
+      台北市中山區松江路 129 號 11 樓
+    </div>
+    <ul class="footer-links">
+      <li><a href="/ads.html">廣告代操</a></li>
+      <li><a href="/design.html">圖像設計</a></li>
+      <li><a href="/video.html">影音製作</a></li>
+      <li><a href="/contact.html">聯絡我們</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>
