@@ -20,7 +20,7 @@
   a { text-decoration: none; color: inherit; }
 
   nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-faint); padding: 0 5%; }
-  .nav-inner { max-width: 1140px; margin: 0 auto; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+  .nav-inner { max-width: 1140px; margin: 0 auto; height: 60px; display: flex; align-items: center; justify-content: space-between; position: relative; }
   .logo { display: flex; align-items: center; gap: 9px; font-size: 15px; font-weight: 500; letter-spacing: -0.02em; }
   .logo-mark { width: 24px; height: 24px; background: var(--orange); border-radius: 6px; display: flex; align-items: center; justify-content: center; }
   .logo-mark svg { width: 14px; height: 14px; fill: #fff; }
@@ -30,6 +30,12 @@
   .nav-links a:hover { color: var(--ink); }
   .nav-cta { background: var(--ink); color: var(--white) !important; font-size: 13px !important; font-weight: 500; padding: 8px 18px; border-radius: 100px; transition: background 0.15s !important; }
   .nav-cta:hover { background: var(--orange) !important; }
+
+  .nav-toggle { display: none; width: 36px; height: 36px; border: none; background: none; cursor: pointer; align-items: center; justify-content: center; flex-direction: column; gap: 5px; padding: 0; }
+  .nav-toggle span { display: block; width: 20px; height: 1.5px; background: var(--ink); transition: transform 0.25s, opacity 0.25s; }
+  .nav-toggle.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
 
   .page-hero { max-width: 1140px; margin: 0 auto; padding: 72px 5% 56px; }
   .eyebrow { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.25rem; }
@@ -81,7 +87,13 @@
   .footer-links a:hover { color: var(--orange); }
 
   @media (max-width: 768px) {
-    .nav-links { display: none; }
+    .nav-toggle { display: flex; }
+    .nav-links { display: none; position: absolute; top: 60px; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: var(--white); border-bottom: 1px solid var(--border-faint); box-shadow: 0 8px 24px rgba(0,0,0,0.06); padding: 8px 5% 16px; }
+    .nav-links.open { display: flex; }
+    .nav-links li { width: 100%; }
+    .nav-links a { display: block; padding: 14px 0; border-bottom: 1px solid var(--border-faint); font-size: 15px; }
+    .nav-links li:last-child a { border-bottom: none; }
+    .nav-cta { display: inline-block; margin-top: 8px; text-align: center; padding: 12px 18px !important; }
     .page-hero { padding: 48px 5% 40px; }
     .video-grid { grid-template-columns: 1fr; }
     .pipeline { flex-direction: column; }
@@ -100,14 +112,38 @@
       <div class="logo-mark"><svg viewBox="0 0 14 14"><path d="M2 11 L7 3 L12 11 Z"/></svg></div>
       BearBoss
     </a>
-    <ul class="nav-links">
+    <ul class="nav-links" id="navLinks">
       <li><a href="ads.html">廣告代操</a></li>
       <li><a href="design.html">圖像設計</a></li>
       <li><a href="video.html" class="active">影音製作</a></li>
       <li><a href="contact.html" class="nav-cta">聯絡我們</a></li>
     </ul>
+    <button class="nav-toggle" id="navToggle" aria-label="開啟選單" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<script>
+  (function () {
+    var toggle = document.getElementById('navToggle');
+    var links = document.getElementById('navLinks');
+    if (!toggle || !links) return;
+    toggle.addEventListener('click', function () {
+      var isOpen = links.classList.toggle('open');
+      toggle.classList.toggle('open', isOpen);
+      toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+    links.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        links.classList.remove('open');
+        toggle.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+  })();
+</script>
+
 
 <section class="page-hero">
   <div class="eyebrow">影音製作</div>
