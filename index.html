@@ -370,16 +370,23 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 3rem;
+    gap: 2.5rem;
     flex-wrap: wrap;
+    row-gap: 1.75rem;
   }
 
   .client-logo {
-    width: 96px;
-    height: 48px;
-    background: var(--border);
-    border-radius: 8px;
-    opacity: 0.55;
+    height: 44px;
+    width: auto;
+    object-fit: contain;
+    opacity: 0.85;
+    filter: grayscale(15%);
+    transition: opacity 0.2s, filter 0.2s;
+  }
+
+  .client-logo:hover {
+    opacity: 1;
+    filter: grayscale(0%);
   }
 
   /* ── WHY ── */
@@ -651,11 +658,15 @@
   <div class="clients-inner">
     <div class="clients-label">服務客戶</div>
     <div class="clients-logos">
-      <div class="client-logo"></div>
-      <div class="client-logo"></div>
-      <div class="client-logo"></div>
-      <div class="client-logo"></div>
-      <div class="client-logo"></div>
+      <img class="client-logo" src="/logos/metalunic.png" alt="美多利 Metalunic">
+      <img class="client-logo" src="/logos/youmei.png" alt="優美牙刷">
+      <img class="client-logo" src="/logos/mushen.png" alt="木生">
+      <img class="client-logo" src="/logos/kiwibird.png" alt="奇異鳥幼稚園">
+      <img class="client-logo" src="/logos/lintec.png" alt="琳得科先進科技股份有限公司">
+      <img class="client-logo" src="/logos/milano.png" alt="米蘭時尚診所">
+      <img class="client-logo" src="/logos/weige.png" alt="薇閣薇恩">
+      <img class="client-logo" src="/logos/yuer.png" alt="御兒">
+      <img class="client-logo" src="/logos/ovo.png" alt="OVO 京典衛浴">
     </div>
   </div>
 </div>
