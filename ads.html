@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>廣告代操｜Bearboss 數位行銷</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+  :root {
+    --orange: #E8521A; --orange-light: #FFF0EA; --orange-dark: #C24010;
+    --ink: #1A1A1A; --ink-mid: #6B6B66; --ink-faint: #A8A89F;
+    --surface: #F5F4F0; --white: #FFFFFF; --border: #E0DED6; --border-faint: #EDECEA;
+    --font: 'Inter', 'Noto Sans TC', -apple-system, sans-serif;
+  }
+  body { font-family: var(--font); background: var(--white); color: var(--ink); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+  a { text-decoration: none; color: inherit; }
+
+  /* NAV */
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-faint); padding: 0 5%; }
+  .nav-inner { max-width: 1140px; margin: 0 auto; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+  .logo { display: flex; align-items: center; gap: 9px; font-size: 15px; font-weight: 500; letter-spacing: -0.02em; }
+  .logo-mark { width: 24px; height: 24px; background: var(--orange); border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+  .logo-mark svg { width: 14px; height: 14px; fill: #fff; }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 13.5px; color: var(--ink-mid); transition: color 0.15s; }
+  .nav-links a.active { color: var(--orange); font-weight: 500; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta { background: var(--ink); color: var(--white) !important; font-size: 13px !important; font-weight: 500; padding: 8px 18px; border-radius: 100px; transition: background 0.15s !important; }
+  .nav-cta:hover { background: var(--orange) !important; }
+
+  /* PAGE HERO */
+  .page-hero { max-width: 1140px; margin: 0 auto; padding: 72px 5% 56px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.25rem; }
+  .eyebrow::before { content: ''; width: 20px; height: 1.5px; background: var(--orange); display: inline-block; }
+  .page-title { font-size: clamp(34px, 5vw, 52px); font-weight: 500; line-height: 1.12; letter-spacing: -0.03em; max-width: 720px; margin-bottom: 1.25rem; }
+  .page-title .accent { color: var(--orange); font-style: italic; }
+  .page-sub { font-size: 16px; color: var(--ink-mid); line-height: 1.65; max-width: 540px; }
+
+  .section { max-width: 1140px; margin: 0 auto; padding: 0 5% 96px; }
+  .section-divider { max-width: 1140px; margin: 0 auto; padding: 0 5%; }
+  .section-divider hr { border: none; border-top: 1px solid var(--border-faint); margin-bottom: 96px; }
+
+  .section-label { font-size: 11.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.5rem; }
+  .section-title { font-size: clamp(24px, 3vw, 34px); font-weight: 500; letter-spacing: -0.025em; line-height: 1.15; margin-bottom: 2.5rem; }
+
+  /* Platform cards */
+  .platform-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 0; }
+  .platform-card { border: 1px solid var(--border); border-radius: 16px; padding: 36px 32px; }
+  .platform-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
+  .platform-icon.google { background: var(--orange-light); }
+  .platform-icon.meta { background: #EEF2FF; }
+  .platform-icon svg { width: 24px; height: 24px; stroke-width: 1.8; fill: none; }
+  .platform-icon.google svg { stroke: var(--orange); }
+  .platform-icon.meta svg { stroke: #4F5BD5; }
+  .platform-name { font-size: 19px; font-weight: 500; margin-bottom: 0.6rem; }
+  .platform-desc { font-size: 13.5px; color: var(--ink-mid); line-height: 1.7; margin-bottom: 1.25rem; }
+  .platform-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+  .tag { font-size: 11.5px; padding: 5px 12px; border-radius: 100px; background: var(--surface); color: var(--ink-mid); border: 1px solid var(--border-faint); }
+
+  /* Process steps */
+  .process-list { display: flex; flex-direction: column; }
+  .process-item { display: grid; grid-template-columns: 64px 1fr; gap: 1.5rem; padding: 28px 0; border-bottom: 1px solid var(--border-faint); }
+  .process-item:last-child { border-bottom: none; }
+  .process-num { font-size: 28px; font-weight: 500; color: var(--orange); letter-spacing: -0.03em; }
+  .process-name { font-size: 17px; font-weight: 500; margin-bottom: 0.4rem; }
+  .process-desc { font-size: 13.5px; color: var(--ink-mid); line-height: 1.65; max-width: 560px; }
+
+  /* Pricing-style cards */
+  .model-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .model-card { background: var(--surface); border-radius: 16px; padding: 32px 28px; }
+  .model-card.highlight { background: var(--ink); }
+  .model-name { font-size: 15px; font-weight: 500; margin-bottom: 0.5rem; }
+  .model-card.highlight .model-name { color: var(--white); }
+  .model-desc { font-size: 13.5px; color: var(--ink-mid); line-height: 1.65; }
+  .model-card.highlight .model-desc { color: rgba(255,255,255,0.6); }
+
+  /* CTA band */
+  .cta-band { max-width: 1140px; margin: 0 auto; padding: 0 5% 96px; }
+  .cta-inner { background: var(--ink); border-radius: 20px; padding: 64px 56px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+  .cta-text .eyebrow { color: rgba(232,82,26,0.9); }
+  .cta-headline { font-size: clamp(26px, 3vw, 38px); font-weight: 500; color: var(--white); letter-spacing: -0.025em; line-height: 1.2; margin-top: 0.75rem; }
+  .cta-headline .accent { color: var(--orange); }
+  .btn-white { background: var(--white); color: var(--ink); font-size: 14px; font-weight: 500; padding: 14px 28px; border-radius: 100px; white-space: nowrap; transition: background 0.15s; display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .btn-white:hover { background: var(--orange); color: var(--white); }
+
+  /* FOOTER */
+  footer { border-top: 1px solid var(--border-faint); padding: 40px 5%; }
+  .footer-inner { max-width: 1140px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .footer-info { font-size: 13px; color: var(--ink-faint); line-height: 1.8; }
+  .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+  .footer-links a { font-size: 13px; color: var(--ink-faint); transition: color 0.15s; }
+  .footer-links a:hover { color: var(--orange); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .page-hero { padding: 48px 5% 40px; }
+    .platform-grid { grid-template-columns: 1fr; }
+    .model-grid { grid-template-columns: 1fr; }
+    .process-item { grid-template-columns: 40px 1fr; }
+    .cta-inner { padding: 40px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <div class="logo-mark"><svg viewBox="0 0 14 14"><path d="M2 11 L7 3 L12 11 Z"/></svg></div>
+      BearBoss
+    </a>
+    <ul class="nav-links">
+      <li><a href="/ads.html" class="active">廣告代操</a></li>
+      <li><a href="/design.html">圖像設計</a></li>
+      <li><a href="/video.html">影音製作</a></li>
+      <li><a href="/contact.html" class="nav-cta">聯絡我們</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="eyebrow">廣告代操</div>
+  <h1 class="page-title">把預算花在<br><span class="accent">真正有效的地方</span></h1>
+  <p class="page-sub">Google Ads、Meta Ads 全平台操作。從受眾策略到素材優化，每一步都有數據追蹤與調整依據。</p>
+</section>
+
+<section class="section">
+  <div class="section-label">服務平台</div>
+  <h2 class="section-title">我們操作的廣告渠道</h2>
+  <div class="platform-grid">
+    <div class="platform-card">
+      <div class="platform-icon google"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9 12l2 2 4-4"/></svg></div>
+      <div class="platform-name">Google Ads</div>
+      <div class="platform-desc">搜尋廣告、購物廣告、多媒體聯播網、YouTube 廣告。針對高意圖關鍵字精準觸及。</div>
+      <div class="platform-tags">
+        <span class="tag">搜尋廣告</span>
+        <span class="tag">購物廣告</span>
+        <span class="tag">YouTube</span>
+      </div>
+    </div>
+    <div class="platform-card">
+      <div class="platform-icon meta"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M9 8h2v8H9zM13 12h2v4h-2z"/></svg></div>
+      <div class="platform-name">Meta Ads</div>
+      <div class="platform-desc">Facebook、Instagram 全版位投放。從觸及到轉換，搭配像素追蹤優化受眾。</div>
+      <div class="platform-tags">
+        <span class="tag">Feed 廣告</span>
+        <span class="tag">Stories</span>
+        <span class="tag">Reels</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><hr></div>
+
+<section class="section">
+  <div class="section-label">合作流程</div>
+  <h2 class="section-title">從接洽到上線</h2>
+  <div class="process-list">
+    <div class="process-item">
+      <div class="process-num">01</div>
+      <div>
+        <div class="process-name">需求訪談與帳戶健診</div>
+        <div class="process-desc">了解品牌目標、過去廣告數據與競品狀況，找出現有帳戶可優化的空間。</div>
+      </div>
+    </div>
+    <div class="process-item">
+      <div class="process-num">02</div>
+      <div>
+        <div class="process-name">策略規劃與素材準備</div>
+        <div class="process-desc">制定受眾分群、出價策略與版位配置，準備首波廣告素材。</div>
+      </div>
+    </div>
+    <div class="process-item">
+      <div class="process-num">03</div>
+      <div>
+        <div class="process-name">上線與即時優化</div>
+        <div class="process-desc">廣告上線後密切觀察數據表現，依成效調整出價、受眾與素材。</div>
+      </div>
+    </div>
+    <div class="process-item">
+      <div class="process-num">04</div>
+      <div>
+        <div class="process-name">定期回報與策略迭代</div>
+        <div class="process-desc">提供清楚的成效報告，並依市場與數據變化持續調整策略方向。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"><hr></div>
+
+<section class="section" style="padding-bottom: 96px;">
+  <div class="section-label">合作模式</div>
+  <h2 class="section-title">收費方式</h2>
+  <div class="model-grid">
+    <div class="model-card">
+      <div class="model-name">服務費加成模式</div>
+      <div class="model-desc">廣告預算與代操服務費分開計算，帳務透明清楚，適合預算規模明確的品牌。</div>
+    </div>
+    <div class="model-card highlight">
+      <div class="model-name">預算內含模式</div>
+      <div class="model-desc">服務費已包含於整體預算內，每月固定總費用，方便財務規劃與內部核銷。</div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="cta-inner">
+    <div class="cta-text">
+      <div class="eyebrow">立即開始</div>
+      <h2 class="cta-headline">想知道你的廣告<br><span class="accent">還有多少優化空間？</span></h2>
+    </div>
+    <a href="/contact.html" class="btn-white">
+      免費諮詢
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 7h8M8 4l3 3-3 3"/></svg>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-info">
+      © 2025 BearBoss 數位行銷&emsp;·&emsp;0277529867&emsp;·&emsp;service@bearbosses.com<br>
+      台北市中山區松江路 129 號 11 樓
+    </div>
+    <ul class="footer-links">
+      <li><a href="/ads.html">廣告代操</a></li>
+      <li><a href="/design.html">圖像設計</a></li>
+      <li><a href="/video.html">影音製作</a></li>
+      <li><a href="/contact.html">聯絡我們</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>
