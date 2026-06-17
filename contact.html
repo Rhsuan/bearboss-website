@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>聯絡我們｜Bearboss 數位行銷</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Noto+Sans+TC:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 16px; scroll-behavior: smooth; }
+  :root {
+    --orange: #E8521A; --orange-light: #FFF0EA; --orange-dark: #C24010;
+    --ink: #1A1A1A; --ink-mid: #6B6B66; --ink-faint: #A8A89F;
+    --surface: #F5F4F0; --white: #FFFFFF; --border: #E0DED6; --border-faint: #EDECEA;
+    --font: 'Inter', 'Noto Sans TC', -apple-system, sans-serif;
+  }
+  body { font-family: var(--font); background: var(--white); color: var(--ink); -webkit-font-smoothing: antialiased; line-height: 1.6; }
+  a { text-decoration: none; color: inherit; }
+
+  nav { position: sticky; top: 0; z-index: 100; background: rgba(255,255,255,0.94); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--border-faint); padding: 0 5%; }
+  .nav-inner { max-width: 1140px; margin: 0 auto; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+  .logo { display: flex; align-items: center; gap: 9px; font-size: 15px; font-weight: 500; letter-spacing: -0.02em; }
+  .logo-mark { width: 24px; height: 24px; background: var(--orange); border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+  .logo-mark svg { width: 14px; height: 14px; fill: #fff; }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 13.5px; color: var(--ink-mid); transition: color 0.15s; }
+  .nav-links a.active { color: var(--orange); font-weight: 500; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta { background: var(--ink); color: var(--white) !important; font-size: 13px !important; font-weight: 500; padding: 8px 18px; border-radius: 100px; transition: background 0.15s !important; }
+  .nav-cta:hover { background: var(--orange) !important; }
+
+  .page-hero { max-width: 1140px; margin: 0 auto; padding: 72px 5% 56px; }
+  .eyebrow { display: inline-flex; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 1.25rem; }
+  .eyebrow::before { content: ''; width: 20px; height: 1.5px; background: var(--orange); display: inline-block; }
+  .page-title { font-size: clamp(34px, 5vw, 52px); font-weight: 500; line-height: 1.12; letter-spacing: -0.03em; max-width: 720px; margin-bottom: 1.25rem; }
+  .page-title .accent { color: var(--orange); font-style: italic; }
+  .page-sub { font-size: 16px; color: var(--ink-mid); line-height: 1.65; max-width: 540px; }
+
+  .section { max-width: 1140px; margin: 0 auto; padding: 0 5% 96px; }
+
+  /* Contact layout */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+
+  .info-card { background: var(--surface); border-radius: 16px; padding: 36px 32px; }
+  .info-row { display: flex; gap: 16px; align-items: flex-start; padding: 18px 0; border-bottom: 1px solid var(--border-faint); }
+  .info-row:last-child { border-bottom: none; }
+  .info-icon { width: 36px; height: 36px; background: var(--white); border: 1px solid var(--border); border-radius: 9px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .info-icon svg { width: 18px; height: 18px; stroke: var(--orange); fill: none; stroke-width: 1.8; }
+  .info-label { font-size: 12px; color: var(--ink-faint); margin-bottom: 0.2rem; }
+  .info-value { font-size: 14.5px; font-weight: 500; }
+
+  .form-card { border: 1px solid var(--border); border-radius: 16px; padding: 36px 32px; }
+  .form-title { font-size: 18px; font-weight: 500; margin-bottom: 0.4rem; }
+  .form-sub { font-size: 13px; color: var(--ink-mid); margin-bottom: 1.75rem; }
+  .form-group { margin-bottom: 1.25rem; }
+  .form-label { display: block; font-size: 12.5px; font-weight: 500; color: var(--ink-mid); margin-bottom: 0.5rem; }
+  .form-input, .form-textarea {
+    width: 100%; border: 1px solid var(--border); border-radius: 10px; padding: 11px 14px;
+    font-size: 14px; font-family: var(--font); color: var(--ink); background: var(--white);
+    transition: border-color 0.15s;
+  }
+  .form-input:focus, .form-textarea:focus { outline: none; border-color: var(--orange); }
+  .form-textarea { resize: vertical; min-height: 100px; }
+  .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-submit {
+    width: 100%; background: var(--ink); color: var(--white); font-size: 14px; font-weight: 500;
+    padding: 13px; border-radius: 100px; border: none; cursor: pointer; transition: background 0.15s;
+    font-family: var(--font); margin-top: 0.5rem;
+  }
+  .form-submit:hover { background: var(--orange); }
+
+  /* Map placeholder */
+  .map-section { max-width: 1140px; margin: 0 auto; padding: 0 5% 96px; }
+  .map-placeholder { background: var(--surface); border-radius: 16px; height: 280px; display: flex; align-items: center; justify-content: center; color: var(--ink-faint); font-size: 13px; }
+
+  footer { border-top: 1px solid var(--border-faint); padding: 40px 5%; }
+  .footer-inner { max-width: 1140px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+  .footer-info { font-size: 13px; color: var(--ink-faint); line-height: 1.8; }
+  .footer-links { display: flex; gap: 1.5rem; list-style: none; }
+  .footer-links a { font-size: 13px; color: var(--ink-faint); transition: color 0.15s; }
+  .footer-links a:hover { color: var(--orange); }
+
+  @media (max-width: 768px) {
+    .nav-links { display: none; }
+    .page-hero { padding: 48px 5% 40px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .form-row-2 { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="/" class="logo">
+      <div class="logo-mark"><svg viewBox="0 0 14 14"><path d="M2 11 L7 3 L12 11 Z"/></svg></div>
+      BearBoss
+    </a>
+    <ul class="nav-links">
+      <li><a href="/ads.html">廣告代操</a></li>
+      <li><a href="/design.html">圖像設計</a></li>
+      <li><a href="/video.html">影音製作</a></li>
+      <li><a href="/contact.html" class="nav-cta active">聯絡我們</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="eyebrow">聯絡我們</div>
+  <h1 class="page-title">讓我們<br><span class="accent">聊聊你的需求</span></h1>
+  <p class="page-sub">不論是廣告代操、圖像設計或影音製作，留下你的資訊，我們會盡快與你聯繫。</p>
+</section>
+
+<section class="section">
+  <div class="contact-grid">
+    <div class="info-card">
+      <div class="info-row">
+        <div class="info-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div>
+          <div class="info-label">電話</div>
+          <div class="info-value">02 7752 9867</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6l-10 7L2 6"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg></div>
+        <div>
+          <div class="info-label">Email</div>
+          <div class="info-value">service@bearbosses.com</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div>
+          <div class="info-label">地址</div>
+          <div class="info-value">台北市中山區松江路 129 號 11 樓</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <div class="info-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+        <div>
+          <div class="info-label">服務時間</div>
+          <div class="info-value">週一至週五 10:00–19:00</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <div class="form-title">填寫表單</div>
+      <div class="form-sub">我們會在 1–2 個工作日內回覆。</div>
+      <form onsubmit="return false;">
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label">姓名</label>
+            <input class="form-input" type="text" placeholder="您的姓名">
+          </div>
+          <div class="form-group">
+            <label class="form-label">公司名稱</label>
+            <input class="form-input" type="text" placeholder="您的公司">
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label class="form-label">電話</label>
+            <input class="form-input" type="tel" placeholder="聯絡電話">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input class="form-input" type="email" placeholder="電子郵件">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">需求說明</label>
+          <textarea class="form-textarea" placeholder="請簡述您的需求，例如想諮詢的服務項目、預算範圍等"></textarea>
+        </div>
+        <button class="form-submit" type="submit">送出諮詢</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="map-section">
+  <div class="map-placeholder">地圖位置：台北市中山區松江路 129 號 11 樓</div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-info">
+      © 2025 BearBoss 數位行銷&emsp;·&emsp;0277529867&emsp;·&emsp;service@bearbosses.com<br>
+      台北市中山區松江路 129 號 11 樓
+    </div>
+    <ul class="footer-links">
+      <li><a href="/ads.html">廣告代操</a></li>
+      <li><a href="/design.html">圖像設計</a></li>
+      <li><a href="/video.html">影音製作</a></li>
+      <li><a href="/contact.html">聯絡我們</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>
